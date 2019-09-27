@@ -13,7 +13,7 @@ class FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: CupertinoColors.white,
       child: Column(
         children: <Widget>[
           MyAppBar('FirstPage'),

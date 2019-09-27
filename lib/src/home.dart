@@ -40,6 +40,9 @@ class TabHome extends StatelessWidget {
               pressedOpacity: 0.9,
             ),
           ),
+          Image.asset(
+            "lib/assets/img/js.jpg",
+          ),
         ],
       ),
     );

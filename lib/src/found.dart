@@ -4,11 +4,10 @@ class TabFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: new Text(
-            "发现", 
-            style: new TextStyle(fontSize:36.0,
-            color: Colors.pink,
-            fontWeight: FontWeight.w800,
-    )));
+      child: Padding(
+        padding: EdgeInsets.only(left: 26, right: 26),
+        child: Text('发现')
+      ),
+    );
   }
 }
