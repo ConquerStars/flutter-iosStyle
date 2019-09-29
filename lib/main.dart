@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:toast/toast.dart';
+// import 'package:toast/toast.dart';
+import 'package:flutter_demo/utils/toast.dart';
 
 import 'package:flutter_demo/src/home.dart';
 import 'package:flutter_demo/src/found.dart';
@@ -82,7 +83,7 @@ class HomePageState extends State<HomePage> {
   Future<bool> quit() async {
     if(lastPopTime == null || DateTime.now().difference(lastPopTime)>Duration(seconds:2)){
       lastPopTime = DateTime.now();
-      Toast.show('再按一次退出', context, duration: 2, gravity: 0);
+      Toast.show('再按一次退出', context);
     } else {
       await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
     }
