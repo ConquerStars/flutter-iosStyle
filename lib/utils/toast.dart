@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Toast {
-  static final int LENGTH_SHORT = 1;
-  static final int LENGTH_LONG = 2;
-  static final int BOTTOM = 0;
-  static final int CENTER = 1;
-  static final int TOP = 2;
+  static final int lengthShort = 1;
+  static final int lengthLong = 2;
+  static final int bottom = 0;
+  static final int center = 1;
+  static final int top = 2;
 
   static void show(String msg, BuildContext context,
       {int duration = 1,
@@ -22,7 +22,7 @@ class Toast {
 }
 
 class ToastView {
-  static final ToastView _singleton = new ToastView._internal();
+  static final ToastView _singleton = ToastView._internal();
 
   factory ToastView() {
     return _singleton;
@@ -42,7 +42,7 @@ class ToastView {
     paint.strokeCap = StrokeCap.square;
     paint.color = background;
 
-    _overlayEntry = new OverlayEntry(
+    _overlayEntry = OverlayEntry(
       builder: (BuildContext context) => ToastWidget(
           widget: Container(
             width: MediaQuery.of(context).size.width,
@@ -65,7 +65,7 @@ class ToastView {
     );
     _isVisible = true;
     overlayState.insert(_overlayEntry);
-    await new Future.delayed(Duration(seconds: duration == null ? Toast.LENGTH_SHORT : duration));
+    await Future.delayed(Duration(seconds: duration ?? Toast.lengthShort));
     dismiss();
   }
 
@@ -90,7 +90,7 @@ class ToastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Positioned(
+    return Positioned(
         top: gravity == 2 ? 50 : null,
         bottom: gravity == 0 ? 50 : null,
         child: Material(

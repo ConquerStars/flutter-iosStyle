@@ -10,7 +10,7 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoNavigationBar(
       middle: Text(title),
-      backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         border: Border.all(
           color: Colors.transparent,
           width: 0.0,

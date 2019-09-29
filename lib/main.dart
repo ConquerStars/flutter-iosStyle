@@ -42,7 +42,6 @@ class HomePageState extends State<HomePage> {
             width: 0.0,
             style: BorderStyle.none),
         ),
-        // appBar: MyAppBar(),
         body: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             activeColor: CupertinoColors.activeBlue,

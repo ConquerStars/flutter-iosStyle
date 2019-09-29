@@ -25,6 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   #网络请求库
   dio: ^2.1.5
+  # 相册
+  image_picker: 0.6.1+4
+  # 视频
+  video_player: 0.10.2+1
+  chewie: 0.9.8
 
 dev_dependencies:
   flutter_test:
