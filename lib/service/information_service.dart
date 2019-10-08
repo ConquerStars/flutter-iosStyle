@@ -6,7 +6,6 @@ void checkVersion(Function(CheckVersionData res) success, Function fail) async {
   try {
     final res = await custDio.get<Map>('http://10.168.1.107:8000/version.json');
     print('-----------getHttpService catch Respond ==== Start');
-    // print(res);
     success(CheckVersionData.fromJson(res.data));
     print('-----------getHttpService catch Respond ==== End');
   } catch (e) {
@@ -19,25 +18,26 @@ void checkVersion(Function(CheckVersionData res) success, Function fail) async {
 class CheckVersionData {
   String version;
   String description;
-  DateTime date;
+  String releaseDate;
   bool isnecessary;
   dynamic data;
 
-  CheckVersionData({this.version, this.description, this.date, this.isnecessary, this.data});
+  CheckVersionData({this.version, this.description, this.releaseDate, this.isnecessary, this.data});
 
   CheckVersionData.fromJson(Map<String, dynamic> json) {
     this.version = json['version'];
     this.description = json['description'];
-    this.date = DateTime.fromMillisecondsSinceEpoch(json['date']);
+    // this.releaseDate = DateTime.fromMillisecondsSinceEpoch(json['releaseDate']);
+    this.releaseDate = json['releaseDate'];
     this.isnecessary = json['isnecessary'];
     this.data = json['data'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['version'] = this.version;
     data['description'] = this.description;
-    data['date'] = this.date;
+    data['releaseDate'] = this.releaseDate;
     data['isnecessary'] = this.isnecessary;
     data['data'] = this.data;
     return data;
