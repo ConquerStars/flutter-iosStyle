@@ -1,5 +1,5 @@
 name: flutter_demo
-description: A new Flutter project.
+description: flutter练习
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -30,6 +30,9 @@ dependencies:
   # 视频
   video_player: 0.10.2+1
   chewie: 0.9.8
+  # 版本管理
+  package_info: ^0.4.0+2
+  permission_handler: 3.2.2
 
 dev_dependencies:
   flutter_test:
