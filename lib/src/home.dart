@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/service/home_servicr.dart';
 
 import 'package:flutter_demo/src/firstPage.dart';
+import 'package:flutter_demo/utils/toast.dart';
 
 class TabHome extends StatelessWidget {
   @override
@@ -47,16 +48,28 @@ class TabHome extends StatelessWidget {
                 color: Colors.white,
               )),
             onPressed: (){
-              showDialog(
+              showCupertinoDialog(
                 context: context,
                 builder: (ctx) {
-                  return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text('1222222222222222222')
-                      ],
-                    ),
+                  return CupertinoAlertDialog(
+                    // title: Text('我是标题'),
+                    content:Text('我是content？'),
+                    actions:<Widget>[
+                      CupertinoDialogAction(
+                        child: Text('不是', style: TextStyle(color: Colors.grey)),
+                        onPressed: (){
+                          Toast.show('nope', context);
+                          Navigator.maybePop(ctx);
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Text('是的'),
+                        onPressed: (){
+                          Toast.show('yeap', context);
+                          Navigator.maybePop(ctx);
+                        },
+                      ),
+                    ],
                   );
                 },
               );

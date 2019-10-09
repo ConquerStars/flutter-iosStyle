@@ -72,6 +72,45 @@ class TabInformation extends StatelessWidget {
                 print(res.version);
                 if(res.version != version){
                   print('版本号有变');
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return CupertinoAlertDialog(
+                        title: Text(res.version),
+                        content: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            res.description,
+                            textAlign: TextAlign.left,
+                            maxLines: 8,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(height: 1.6)
+                          ),
+                        ),
+                        actions:res.isnecessary?<Widget>[
+                          CupertinoDialogAction(
+                            child: Text('立即更新'),
+                            onPressed: (){
+                              Navigator.maybePop(ctx);
+                            },
+                          ),
+                        ]:<Widget>[
+                          CupertinoDialogAction(
+                            child: Text('稍后再说', style: TextStyle(color: Colors.grey)),
+                            onPressed: (){
+                              Navigator.maybePop(ctx);
+                            },
+                          ),
+                          CupertinoDialogAction(
+                            child: Text('立即更新'),
+                            onPressed: (){
+                              Navigator.maybePop(ctx);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 }
               }, (){
                 print('fail');
