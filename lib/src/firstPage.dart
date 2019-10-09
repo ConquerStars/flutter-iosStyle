@@ -33,17 +33,18 @@ class FirstPageState extends State<FirstPage> {
   }
   Future getVideo() async {
     var video = await ImagePicker.pickVideo(source: ImageSource.camera);
-    setState(() {
-      _video = video;
-    });
-    // _controller.dispose();
-    _controller = VideoPlayerController.file(_video);
-    _chewieController = ChewieController(
-      videoPlayerController: _controller,
-      aspectRatio: 3 / 2,
-      autoPlay: true,
-      looping: true,
-    );
+    if(video != null){
+      setState(() {
+        _video = video;
+      });
+      _controller = VideoPlayerController.file(_video);
+      _chewieController = ChewieController(
+        videoPlayerController: _controller,
+        aspectRatio: 3 / 2,
+        autoPlay: true,
+        looping: true,
+      );
+    }
   }
   
   @override
@@ -107,7 +108,10 @@ class FirstPageState extends State<FirstPage> {
                     style: TextStyle(
                       color: Colors.white,
                     )),
-                  onPressed: getVideo,
+                  onPressed: (){
+                    _chewieController.pause();
+                    getVideo();
+                  },
                   pressedOpacity: 0.9,
                 ),
               ],
@@ -122,6 +126,8 @@ class FirstPageState extends State<FirstPage> {
     super.dispose();
     _chewieController.dispose();
     _controller.dispose();
+    _video = null;
+    _img = null;
   }
 }
 

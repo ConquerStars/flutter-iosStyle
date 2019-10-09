@@ -25,7 +25,7 @@ class TabInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey containerKey = GlobalKey();
     final size = MediaQuery.of(context).size;
-    return Column(
+    return ListView(
       key: containerKey,
       children: <Widget>[
         Container(
@@ -42,57 +42,51 @@ class TabInformation extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: ListView(
-            children: <Widget>[
-              FlatButton(
-                child: Text('checkSize'),
-                onPressed: ()async{
-                  print(size.height);
-                  print(size.width);
-                  print(containerKey.currentContext.size.height);
-                  print(containerKey.currentContext.size.width);
-                },
-              ),
-              FlatButton(
-                child: Text('checkVersion'),
-                onPressed: ()async{
-                  // 安装包信息
-                  await PackageInfo.fromPlatform().then((PackageInfo res) {
-                    String appName = res.appName;
-                    String packageName = res.packageName;
-                    String version = res.version;
-                    String buildNumber = res.buildNumber;
-                    print('++++++++++++++++++PackageInfo++++++++++++++++++++++');
-                    print(appName);
-                    print(packageName);
-                    print(version);
-                    print(buildNumber);
-                    print('++++++++++++++++++PackageInfo++++++++++++++++++++++');
-                    // 检查版本是否有更新
-                    checkVersion((CheckVersionData res){
-                      print('----------success-----------');
-                      print(res.version);
-                      if(res.version != version){
-                        print('版本号有变');
-                      }
-                    }, (){
-                      print('fail');
-                    });
-                  });
-                },
-              ),
-              FlatButton(
-                child: Text('checkPermission'),
-                onPressed: ()async{
-                  // 检查权限
-                  bool flag = await checkPermission();
-                  print(flag?'可使用存储权限':'无权限');
-                },
-              ),
-            ],
-          ),
-        )
+        FlatButton(
+          child: Text('checkSize'),
+          onPressed: ()async{
+            print(size.height);
+            print(size.width);
+            print(containerKey.currentContext.size.height);
+            print(containerKey.currentContext.size.width);
+          },
+        ),
+        FlatButton(
+          child: Text('checkVersion'),
+          onPressed: ()async{
+            // 安装包信息
+            await PackageInfo.fromPlatform().then((PackageInfo res) {
+              String appName = res.appName;
+              String packageName = res.packageName;
+              String version = res.version;
+              String buildNumber = res.buildNumber;
+              print('++++++++++++++++++PackageInfo++++++++++++++++++++++');
+              print(appName);
+              print(packageName);
+              print(version);
+              print(buildNumber);
+              print('++++++++++++++++++PackageInfo++++++++++++++++++++++');
+              // 检查版本是否有更新
+              checkVersion((CheckVersionData res){
+                print('----------success-----------');
+                print(res.version);
+                if(res.version != version){
+                  print('版本号有变');
+                }
+              }, (){
+                print('fail');
+              });
+            });
+          },
+        ),
+        FlatButton(
+          child: Text('checkPermission'),
+          onPressed: ()async{
+            // 检查权限
+            bool flag = await checkPermission();
+            print(flag?'可使用存储权限':'无权限');
+          },
+        ),
       ]
     );
   }

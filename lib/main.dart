@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return MaterialApp(
       home: HomePage(),
     );
   }
@@ -33,8 +33,8 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      child: Scaffold(
-        appBar: CupertinoNavigationBar(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
           middle: Text(this.title),
           backgroundColor: Colors.transparent,
           border: Border.all(
@@ -42,7 +42,7 @@ class HomePageState extends State<HomePage> {
             width: 0.0,
             style: BorderStyle.none),
         ),
-        body: CupertinoTabScaffold(
+        child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             activeColor: CupertinoColors.activeBlue,
             backgroundColor: Colors.transparent,
