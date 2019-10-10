@@ -34,6 +34,8 @@ dependencies:
   package_info: ^0.4.0+2
   permission_handler: 3.2.2
   flutter_downloader: 1.2.2
+  path_provider: 1.3.0
+  install_plugin: 2.0.1
 
 dev_dependencies:
   flutter_test:
