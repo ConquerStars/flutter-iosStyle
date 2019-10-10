@@ -92,7 +92,11 @@ class TabInformation extends StatelessWidget {
                           CupertinoDialogAction(
                             child: Text('立即更新'),
                             onPressed: (){
+                              UpdateService().executeDownload(checkVersionData.data).then((id){
+                                taskId = id;
+                              });
                               Navigator.maybePop(ctx);
+                              Toast.show('正在为您下载新版本...', ctx);
                             },
                           ),
                         ]:<Widget>[
@@ -169,6 +173,7 @@ class TabInformation extends StatelessWidget {
         FlatButton(
           child: Text('downloadTaskCancel'),
           onPressed: (){
+            print(taskId);
             UpdateService().cancelDownload(taskId);
             Toast.show('取消当前下载任务', context);
           },
