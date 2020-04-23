@@ -81,8 +81,8 @@ class ToastView {
 class ToastWidget extends StatelessWidget {
   ToastWidget({
     Key key,
-    @required this.widget,
-    @required this.gravity,
+    this.widget,
+    this.gravity,
   }) : super(key: key);
 
   final Widget widget;

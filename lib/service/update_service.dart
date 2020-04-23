@@ -15,7 +15,7 @@ class UpdateService{
     //发起请求
     String taskId = await FlutterDownloader.enqueue(
         url: url,
-        fileName: 'flutter_demo.apk',
+        fileName: 'app-release.apk',
         savedDir: path,
         showNotification: true,
         openFileFromNotification: false);
@@ -48,7 +48,7 @@ class UpdateService{
     try {
       final path = await _apkLocalPath();
 
-      InstallPlugin.installApk(path + '/flutter_demo.apk', 'com.example.app_update_demo')
+      InstallPlugin.installApk(path + '/app-release.apk', 'com.example.flutter_demo')
           .then((result) {
         print('install apk $result');
       }).catchError((error) {
